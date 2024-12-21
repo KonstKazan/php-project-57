@@ -13,18 +13,17 @@ return [
     |
     */
 
-    'password' => 'Password',
-    'logo' => 'Task Manager',
-    'push' => 'Push me',
-    'body' => 'This is a simple Laravel task manager.',
-    'greeting' => 'Greetings from Hexlet!',
-    'confirmation' => 'Are you sure?',
-    'exit' => 'Exit',
-    'login' => 'Login',
-    'registration' => 'Registration',
-    'tasks' => 'Tasks',
-    'statuses' => 'Statuses',
-    'tags' => 'Labels',
-
+    'labels' => 'Labels',
+    'createLabel' => 'Create label',
+    'id' => 'ID',
+    'name' => 'Name',
+    'description' => 'Description',
+    'dateCreation' => 'Date of creation',
+    'actions' => 'Actions',
+    'delete' => 'Delete',
+    'edit' => 'Edit',
+    'editLabel' => 'Edit label',
+    'update' => 'Update',
+    'create' => 'Create',
 
 ];

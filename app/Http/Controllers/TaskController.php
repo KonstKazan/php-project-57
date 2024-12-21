@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Label;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
@@ -28,10 +29,12 @@ class TaskController extends Controller
         if (Auth::check()) {
             $taskStatuses = TaskStatus::all();
             $users = User::all();
+            $labels = Label::all();
             return view('task.create',
                 [
                     'task_statuses' => $taskStatuses,
                     'users' => $users,
+                    'labels' => $labels,
                 ]);
         }
         return abort(401);
@@ -48,10 +51,13 @@ class TaskController extends Controller
             'status_id' => 'required',
             'assigned_to_id' => '',
         ]);
+        $labelsReq = $request->input('labels');
+        $labels = Label::find($labelsReq);
         $task = new Task();
         $task->fill($dataFill);
         $task->created_by_id = Auth::id();
         $task->save();
+        $task->labels()->attach($labels);
         return redirect()
             ->route('task.index');
     }
@@ -61,7 +67,12 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        return view('task.show', compact('task'));
+        $labels = $task->labels;
+        return view('task.show',
+            [
+                'task' => $task,
+                'labels' => $labels,
+            ]);
     }
 
     /**
@@ -72,11 +83,13 @@ class TaskController extends Controller
         if (Auth::check()) {
             $taskStatuses = TaskStatus::all();
             $users = User::all();
+            $labels = Label::all();
             return view('task.edit',
                 [
                     'task' => $task,
                     'task_statuses' => $taskStatuses,
                     'users' => $users,
+                    'labels' => $labels,
                 ]);
         }
         return abort(401);
@@ -95,6 +108,9 @@ class TaskController extends Controller
         ]);
         $task->fill($dataFill);
         $task->save();
+        $labelsReq = $request->input('labels');
+        $labels = Label::find($labelsReq);
+        $task->labels()->sync($labels);
         return redirect()
             ->route('task.index');
     }
@@ -105,6 +121,7 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         if (Auth::check()) {
+            $task->labels()->detach();
             $task->delete();
             return redirect()->route('task.index');
         }

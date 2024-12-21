@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LabelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,17 @@ Route::resource('tasks', TaskController::class)
         'destroy' => 'task.destroy',
         'index' => 'task.index',
         'show' => 'task.show',
+    ]);
+
+Route::resource('labels', LabelController::class)
+    ->names([
+        'store' => 'label.create',
+        'create' => 'label.build',
+        'edit' => 'label.edit',
+        'update' => 'label.update',
+        'destroy' => 'label.destroy',
+        'index' => 'label.index',
+        'show' => 'label.show',
     ]);
 
 require __DIR__.'/auth.php';

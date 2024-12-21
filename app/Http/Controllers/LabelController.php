@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TaskStatus;
+use App\Models\Label;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TaskStatusController extends Controller
+class LabelController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $statuses = TaskStatus::paginate();
-        return view('task_status.index', compact('statuses'));
+        $labels = Label::paginate();
+        return view('label.index', compact('labels'));
     }
 
     /**
@@ -24,7 +24,7 @@ class TaskStatusController extends Controller
     public function create()
     {
         if (Auth::check()) {
-            return view('task_status.create');
+            return view('label.create');
         }
         return abort(401);
     }
@@ -34,20 +34,21 @@ class TaskStatusController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $data = $request->validate([
-            'name' => 'required|unique:task_statuses|max:20'
+        $dataFill = $request->validate([
+            'name' => 'required|unique:labels|max:20',
+            'description' => 'max:100',
         ]);
-        $status = new TaskStatus();
-        $status->fill($data);
-        $status->save();
+        $label = new Label();
+        $label->fill($dataFill);
+        $label->save();
         return redirect()
-            ->route('status.index');
+            ->route('label.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(TaskStatus $taskStatus)
+    public function show(Label $label)
     {
         //
     }
@@ -55,10 +56,10 @@ class TaskStatusController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaskStatus $taskStatus)
+    public function edit(Label $label)
     {
         if (Auth::check()) {
-            return view('task_status.edit', ['task_status' => $taskStatus]);
+            return view('label.edit', ['label' => $label]);
         }
         return abort(401);
     }
@@ -66,31 +67,32 @@ class TaskStatusController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TaskStatus $taskStatus): RedirectResponse
+    public function update(Request $request, Label $label): RedirectResponse
     {
         $data = $request->validate([
-            'name' => "required|max:20|unique:task_statuses,name,{$taskStatus->id}"
+            'name' => "required|max:20|unique:labels,name,{$label->id}",
+            'description' => 'max:100',
         ]);
-        $taskStatus->fill($data);
-        $taskStatus->save();
+        $label->fill($data);
+        $label->save();
         return redirect()
-            ->route('status.index');
+            ->route('label.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaskStatus $taskStatus)
+    public function destroy(Label $label)
     {
         if (Auth::check()) {
             try {
-                $taskStatus->delete();
+                $label->delete();
             } catch (\Exception $e) {
-                flash('Не удалось удалить статус');
+                flash('Не удалось удалить метку');
                 return redirect()
-                    ->route('status.index');
+                    ->route('label.index');
             }
-            return redirect()->route('status.index');
+            return redirect()->route('label.index');
         }
         return abort(401);
     }

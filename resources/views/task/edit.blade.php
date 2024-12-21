@@ -57,7 +57,17 @@
                             <label for="status_id">{{ __('task.tags') }}</label>
                         </div>
                         <div>
-                            <select class="rounded border-gray-300 w-1/3 h-32" name="labels[]" id="labels[]" multiple><option value="1">ошибка</option><option value="2">документация</option><option value="3">дубликат</option><option value="4">доработка</option></select>
+                            <select class="rounded border-gray-300 w-1/3 h-32" name="labels[]" id="labels[]" multiple>
+                                @foreach($labels as $label)
+                                    <option value="{{ $label->id }}"
+                                @if ($task->labels->contains($label))
+                                    selected="selected"
+                                @endif
+                                    >
+                                        {{ $label->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mt-2">
                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">{{ __('task.edit') }}</button>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @property bool|mixed $created_by_id
@@ -24,5 +25,10 @@ class Task extends Model
     public function status(): BelongsTo
     {
         return $this->belongsTo(TaskStatus::class, 'status_id');
+    }
+
+    public function labels(): BelongsToMany
+    {
+        return $this->belongsToMany(Label::class);
     }
 }

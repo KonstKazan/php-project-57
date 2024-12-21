@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskStatusController;
 
@@ -22,7 +23,18 @@ Route::resource('task_statuses', TaskStatusController::class)
         'edit' => 'status.edit',
         'update' => 'status.update',
         'destroy' => 'status.destroy',
-        'index' => 'status.index'
+        'index' => 'status.index',
+    ]);
+
+Route::resource('tasks', TaskController::class)
+    ->names([
+        'store' => 'task.create',
+        'create' => 'task.build',
+        'edit' => 'task.edit',
+        'update' => 'task.update',
+        'destroy' => 'task.destroy',
+        'index' => 'task.index',
+        'show' => 'task.show',
     ]);
 
 require __DIR__.'/auth.php';

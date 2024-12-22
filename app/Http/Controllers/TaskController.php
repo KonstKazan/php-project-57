@@ -9,16 +9,37 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::paginate();
-        return view('task.index', compact('tasks'));
+        $statusId = $request->collect()->value('status_id');
+        $createdId = $request->collect()->value('created_by_id');
+        $assignedId = $request->collect()->value('assigned_to_id');
+        $taskStatuses = TaskStatus::all();
+        $users = User::all();
+        $tasks = QueryBuilder::for(Task::class)
+            ->allowedFilters([AllowedFilter::exact('status_id'),
+                AllowedFilter::exact('created_by_id'),
+                AllowedFilter::exact('assigned_to_id')
+            ])
+            ->get();
+//        $tasks = Task::paginate();
+        return view('task.index',
+        [
+            'tasks' => $tasks,
+            'users' => $users,
+            'taskStatuses' => $taskStatuses,
+            'statusId' => (int)$statusId,
+            'createdId' => (int)$createdId,
+            'assignedId' => (int)$assignedId,
+        ]);
     }
 
     /**

@@ -24,5 +24,6 @@ return [
     'statuses' => 'Statuses',
     'delete' => 'Delete',
     'edit' => 'Edit',
+    'status' => 'Status',
 
 ];

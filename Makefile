@@ -15,6 +15,9 @@ install:
 test:
 	php artisan test
 
+test-coverage:
+	XDEBUG_MODE=coverage php artisan test --coverage-clover build/logs/clover.xml
+
 ide-helper:
 	php artisan ide-helper:eloquent
 	php artisan ide-helper:gen

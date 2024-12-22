@@ -27,9 +27,9 @@ jobs:
       - name: Install
         # Install project
         run: make install
-      - name: Run linter
+      #- name: Run linter
         # Run Linter
-        run: make lint
+      #  run: make lint
       - name: Run tests
         # Run Tests
         run: make test

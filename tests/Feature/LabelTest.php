@@ -76,6 +76,7 @@ class LabelTest extends TestCase
         $this
             ->actingAs($user)
             ->get('/profile');
+
         $this->seed();
         $label = Label::all()->first();
         $id = $label->value('id');

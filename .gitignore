@@ -6,3 +6,4 @@ gen
 
 /vendor/
 /node_modules/
+/build/

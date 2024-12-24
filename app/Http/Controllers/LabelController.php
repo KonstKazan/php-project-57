@@ -76,6 +76,7 @@ class LabelController extends Controller
         ]);
         $label->fill($data);
         $label->save();
+        flash('Метка успешно изменена');
         return redirect()
             ->route('label.index');
     }

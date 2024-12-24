@@ -41,6 +41,7 @@ class LabelController extends Controller
         $label = new Label();
         $label->fill($dataFill);
         $label->save();
+        flash('Метка успешно создана');
         return redirect()
             ->route('label.index');
     }

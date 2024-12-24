@@ -12,20 +12,18 @@
                     <div class="mt-2">
                         <input class="rounded border-gray-300 w-1/3" type="text" name="name" id="name" value="{{ $task_status->name }}">
                     </div>
-                    <div class="mt-2">
-                        <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 ms-3">
-                            {{ __('task_status.update') }}
-                        </button>
-                    </div>
                     @if ($errors->any())
-                        <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
-                        </div>
                     @endif
+                    <div class="mt-2">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            {{ __('task_status.update') }}
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

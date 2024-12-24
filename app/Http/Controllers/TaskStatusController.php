@@ -40,6 +40,7 @@ class TaskStatusController extends Controller
         $status = new TaskStatus();
         $status->fill($data);
         $status->save();
+        flash('Статус успешно создан');
         return redirect()
             ->route('status.index');
     }

@@ -22,4 +22,11 @@ class Label extends Model
     {
         return $this->belongsToMany(Task::class);
     }
+
+    public function attributes(): array
+    {
+        return [
+            'name' => 'Метка'
+        ];
+    }
 }

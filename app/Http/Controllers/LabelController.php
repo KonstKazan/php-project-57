@@ -93,6 +93,7 @@ class LabelController extends Controller
                 return redirect()
                     ->route('label.index');
             }
+            flash('Метка успешно удалена');
             return redirect()->route('label.index');
         }
         return abort(401);

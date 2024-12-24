@@ -90,6 +90,7 @@ class TaskStatusController extends Controller
                 return redirect()
                     ->route('status.index');
             }
+            flash('Статус успешно удалён');
             return redirect()->route('status.index');
         }
         return abort(401);

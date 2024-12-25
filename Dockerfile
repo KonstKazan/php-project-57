@@ -32,4 +32,4 @@ ENV LOG_CHANNEL stderr
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
-CMD ["bash", "-c", "/start.sh && php artisan serve --host=0.0.0.0 --port=$PORT"]
+CMD ["bash", "-c", "scripts/00-laravel-deploy.sh && php artisan serve --host=0.0.0.0 --port=$PORT"]

@@ -19,8 +19,8 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'description' => fake()->text(),
+            'name' => fake('ru_RU')->word(),
+            'description' => fake('ru_RU')->sentence(),
             'status_id' => '',
             'created_by_id' => '',
             'assigned_to_id' => '',

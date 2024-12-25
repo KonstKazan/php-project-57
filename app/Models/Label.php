@@ -29,4 +29,6 @@ class Label extends Model
             'name' => 'Метка'
         ];
     }
+
+    protected $dateFormat = 'd.m.Y';
 }

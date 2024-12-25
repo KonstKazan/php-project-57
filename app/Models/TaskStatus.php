@@ -19,4 +19,6 @@ class TaskStatus extends Model
     {
         return $this->hasMany(Task::class, 'status_id');
     }
+
+    protected $dateFormat = 'd.m.Y';
 }

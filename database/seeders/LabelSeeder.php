@@ -17,32 +17,32 @@ class LabelSeeder extends Seeder
         DB::table('labels')->insert([
             'name' => 'ошибка',
             'description' => 'Какая-то ошибка в коде или проблема с функциональностью',
-            'created_at' => "$now",
-            'updated_at' => "$now",
+//            'created_at' => "$now",
+//            'updated_at' => "$now",
 
         ]);
 
         DB::table('labels')->insert([
             'name' => 'документация',
             'description' => 'Задача которая касается документации',
-            'created_at' => "$now",
-            'updated_at' => "$now",
+//            'created_at' => "$now",
+//            'updated_at' => "$now",
 
         ]);
 
         DB::table('labels')->insert([
             'name' => 'дубликат',
             'description' => 'Повтор другой задачи',
-            'created_at' => "$now",
-            'updated_at' => "$now",
+//            'created_at' => "$now",
+//            'updated_at' => "$now",
 
         ]);
 
         DB::table('labels')->insert([
             'name' => 'доработка',
             'description' => 'Новая фича, которую нужно запилить',
-            'created_at' => "$now",
-            'updated_at' => "$now",
+//            'created_at' => "$now",
+//            'updated_at' => "$now",
 
         ]);
     }

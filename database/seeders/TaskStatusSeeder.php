@@ -16,29 +16,29 @@ class TaskStatusSeeder extends Seeder
         $now = \Carbon\Carbon::now();
         DB::table('task_statuses')->insert([
             'name' => 'новый',
-            'created_at' => "$now",
-            'updated_at' => "$now",
+//            'created_at' => "$now",
+//            'updated_at' => "$now",
 
         ]);
 
         DB::table('task_statuses')->insert([
             'name' => 'в работе',
-            'created_at' => "$now",
-            'updated_at' => "$now",
+//            'created_at' => "$now",
+//            'updated_at' => "$now",
 
         ]);
 
         DB::table('task_statuses')->insert([
             'name' => 'на тестировании',
-            'created_at' => "$now",
-            'updated_at' => "$now",
+//            'created_at' => "$now",
+//            'updated_at' => "$now",
 
         ]);
 
         DB::table('task_statuses')->insert([
             'name' => 'завершен',
-            'created_at' => "$now",
-            'updated_at' => "$now",
+//            'created_at' => "$now",
+//            'updated_at' => "$now",
 
         ]);
     }

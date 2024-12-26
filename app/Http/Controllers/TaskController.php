@@ -79,6 +79,7 @@ class TaskController extends Controller
         $task->created_by_id = Auth::id();
         $task->save();
         $task->labels()->attach($labels);
+        flash('Задача успешно создана');
         return redirect()
             ->route('task.index');
     }

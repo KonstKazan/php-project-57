@@ -145,6 +145,7 @@ class TaskController extends Controller
         if (Auth::check()) {
             $task->labels()->detach();
             $task->delete();
+            flash('Задача успешно удалена');
             return redirect()->route('task.index');
         }
         return abort(401);

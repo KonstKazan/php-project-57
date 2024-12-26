@@ -49,4 +49,4 @@ Route::resource('labels', LabelController::class)
         'show' => 'label.show',
     ]);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

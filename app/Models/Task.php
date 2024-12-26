@@ -17,7 +17,8 @@ use Illuminate\Support\Carbon;
 class Task extends Model
 {
     /** @use HasFactory<TaskFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     protected $fillable = ['name', 'description', 'status_id', 'assigned_to_id'];
     public function creator(): BelongsTo

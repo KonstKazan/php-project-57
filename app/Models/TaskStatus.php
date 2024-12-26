@@ -13,7 +13,8 @@ use Illuminate\Support\Carbon;
 class TaskStatus extends Model
 {
     /** @use HasFactory<TaskStatusFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     protected $fillable = ['name'];
 

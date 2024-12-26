@@ -22,7 +22,7 @@ return [
     'actions' => 'Actions',
     'statuses' => 'Statuses',
     'delete' => 'Удалить',
-    'edit' => 'Изменить',
+    'edit' => 'Обновить',
     'status' => 'Статус',
     'author' => 'Автор',
     'executor' => 'Исполнитель',

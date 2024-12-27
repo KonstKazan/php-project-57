@@ -21,7 +21,6 @@ class TaskSeeder extends Seeder
             ->for(TaskStatus::factory(), 'status')
             ->has(Label::factory(), 'labels')
             ->create();
-
     }
 //        DB::table('tasks')->insert([
 //            'name' => 'документация',

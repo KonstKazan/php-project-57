@@ -116,7 +116,8 @@ class TaskController extends Controller
                     'task_statuses' => $taskStatuses,
                     'users' => $users,
                     'labels' => $labels,
-                ]);
+                ]
+            );
         }
         return abort(401);
     }

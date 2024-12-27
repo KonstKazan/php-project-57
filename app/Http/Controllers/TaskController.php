@@ -31,15 +31,14 @@ class TaskController extends Controller
             ])
             ->get();
 //        $tasks = Task::paginate();
-        return view('task.index',
-            [
-                'tasks' => $tasks,
-                'users' => $users,
-                'taskStatuses' => $taskStatuses,
-                'statusId' => (int)$statusId,
-                'createdId' => (int)$createdId,
-                'assignedId' => (int)$assignedId,
-            ]);
+        return view('task.index', [
+            'tasks' => $tasks,
+            'users' => $users,
+            'taskStatuses' => $taskStatuses,
+            'statusId' => (int)$statusId,
+            'createdId' => (int)$createdId,
+            'assignedId' => (int)$assignedId,
+        ]);
     }
 
     /**
@@ -51,8 +50,8 @@ class TaskController extends Controller
             $taskStatuses = TaskStatus::all();
             $users = User::all();
             $labels = Label::all();
-            return view
-            ('task.create',
+            return view(
+                'task.create',
                 [
                     'task_statuses' => $taskStatuses,
                     'users' => $users,
@@ -92,8 +91,8 @@ class TaskController extends Controller
     public function show(Task $task)
     {
         $labels = $task->labels;
-        return view
-        ('task.show',
+        return view(
+            'task.show',
             [
                 'task' => $task,
                 'labels' => $labels,
@@ -110,7 +109,8 @@ class TaskController extends Controller
             $taskStatuses = TaskStatus::all();
             $users = User::all();
             $labels = Label::all();
-            return view('task.edit',
+            return view(
+                'task.edit',
                 [
                     'task' => $task,
                     'task_statuses' => $taskStatuses,

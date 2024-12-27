@@ -23,7 +23,6 @@ class TaskSeeder extends Seeder
             ->create();
 
     }
-
 //        DB::table('tasks')->insert([
 //            'name' => 'документация',
 //            'description' => 'Задача которая касается документации',

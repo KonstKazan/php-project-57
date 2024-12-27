@@ -6,7 +6,6 @@ use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskStatusController;
 
-
 Route::get('/', static function () {
     return view('dashboard');
 })->name('dashboard');

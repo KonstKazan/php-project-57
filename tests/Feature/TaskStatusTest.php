@@ -11,7 +11,7 @@ class TaskStatusTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_task_status_page(): void
+    public function testTaskStatusPage(): void
     {
         $response = $this->get('/task_statuses');
 
@@ -21,7 +21,7 @@ class TaskStatusTest extends TestCase
     /**
      * @throws \JsonException
      */
-    public function test_task_status_create(): void
+    public function testTaskStatusCreate(): void
     {
         $response = $this
             ->post('/task_statuses', [
@@ -36,7 +36,7 @@ class TaskStatusTest extends TestCase
         ]);
     }
 
-    public function test_task_status_seed(): void
+    public function testTaskStatusSeed(): void
     {
         $this->seed();
         $this->assertDatabaseHas('task_statuses', [
@@ -47,7 +47,7 @@ class TaskStatusTest extends TestCase
     /**
      * @throws \JsonException
      */
-    public function test_task_status_update(): void
+    public function testTaskStatusUpdate(): void
     {
         $this->seed();
         $id = TaskStatus::all()->first()->value('id');
@@ -67,7 +67,7 @@ class TaskStatusTest extends TestCase
     /**
      * @throws \JsonException
      */
-    public function test_task_status_delete(): void
+    public function testTaskStatusDelete(): void
     {
         $user = User::factory()->create();
 

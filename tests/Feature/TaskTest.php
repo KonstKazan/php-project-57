@@ -16,7 +16,7 @@ class TaskTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_task_page(): void
+    public function testTaskPage(): void
     {
         $response = $this->get('/tasks');
 
@@ -26,7 +26,7 @@ class TaskTest extends TestCase
     /**
      * @throws \JsonException
      */
-    public function test_task_create(): void
+    public function testTaskCreate(): void
     {
         $this->seed();
         $user = User::factory()->create();
@@ -58,7 +58,7 @@ class TaskTest extends TestCase
     /**
      * @throws \JsonException
      */
-    public function test_task_update(): void
+    public function testTaskUpdate(): void
     {
         $user = User::factory()->create();
 
@@ -88,7 +88,7 @@ class TaskTest extends TestCase
     /**
      * @throws \JsonException
      */
-    public function test_task_delete(): void
+    public function testTaskDelete(): void
     {
         $user = User::factory()->create();
         $this

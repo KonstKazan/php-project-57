@@ -11,7 +11,7 @@ class LabelTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_labels_page(): void
+    public function testLabelsPage(): void
     {
         $response = $this->get('/labels');
 
@@ -21,7 +21,7 @@ class LabelTest extends TestCase
     /**
      * @throws \JsonException
      */
-    public function test_label_create(): void
+    public function testLabelCreate(): void
     {
         $response = $this
             ->post('/labels', [
@@ -37,7 +37,7 @@ class LabelTest extends TestCase
         ]);
     }
 
-    public function test_label_seed(): void
+    public function testLabelSeed(): void
     {
         $this->seed();
         $this->assertDatabaseHas('labels', [
@@ -48,7 +48,7 @@ class LabelTest extends TestCase
     /**
      * @throws \JsonException
      */
-    public function test_label_update(): void
+    public function testLabelUpdate(): void
     {
         $this->seed();
         $id = Label::all()->first()->value('id');
@@ -69,7 +69,7 @@ class LabelTest extends TestCase
     /**
      * @throws \JsonException
      */
-    public function test_label_delete(): void
+    public function testLabelDelete(): void
     {
         $user = User::factory()->create();
 

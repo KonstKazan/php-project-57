@@ -46,7 +46,7 @@ class Task extends Model
 //    {
 //        return $date->format('d.m.Y');
 //    }
-    public function getCreatedAtAttribute($value): string
+    public function getCreatedAtAttribute(mixed $value): string
     {
         return Carbon::parse($value)->format('d.m.Y');
     }

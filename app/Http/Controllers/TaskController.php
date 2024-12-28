@@ -125,7 +125,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, Task $task): RedirectResponse
     {
         $dataFill = $request->validate([
             'name' => "required|max:20|unique:tasks,name,{$task->id}",
@@ -137,7 +137,8 @@ class TaskController extends Controller
         $task->save();
         $labelsReq = $request->input('labels');
         $labels = Label::find($labelsReq);
-        $task->labels()->sync($labels);
+        $ids = $labels->modelKeys();
+        $task->labels()->sync($ids);
         flash('Задача успешно изменена');
         return redirect()
             ->route('task.index');

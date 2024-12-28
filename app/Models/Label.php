@@ -35,7 +35,7 @@ class Label extends Model
         ];
     }
 
-    public function getCreatedAtAttribute($value): string
+    public function getCreatedAtAttribute(mixed $value): string
     {
         return Carbon::parse($value)->format('d.m.Y');
     }

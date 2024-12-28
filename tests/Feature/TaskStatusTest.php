@@ -50,7 +50,8 @@ class TaskStatusTest extends TestCase
     public function testTaskStatusUpdate(): void
     {
         $this->seed();
-        $id = TaskStatus::all()->first()->value('id');
+        $status = TaskStatus::all()->first();
+        $id = $status->value('id');
         $response = $this
             ->patch("/task_statuses/$id", [
                 'name' => 'Test Status',

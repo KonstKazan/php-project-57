@@ -27,8 +27,6 @@ class User extends Authenticatable
         'password',
     ];
 
-    protected $id;
-
     /**
      * The attributes that should be hidden for serialization.
      *

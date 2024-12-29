@@ -136,7 +136,7 @@ class TaskController extends Controller
         $task->fill($dataFill);
         $task->save();
         $labelsReq = $request->input('labels');
-        $labels = Label::find($labelsReq);
+        $labels = Label::find($labelsReq) ?? [];
         $task->labels()->sync($labels);
 //        $ids = $labels->modelKeys();
 //        $task->labels()->sync($ids);

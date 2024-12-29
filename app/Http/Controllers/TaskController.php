@@ -137,8 +137,9 @@ class TaskController extends Controller
         $task->save();
         $labelsReq = $request->input('labels');
         $labels = Label::find($labelsReq);
-        $ids = $labels->modelKeys();
-        $task->labels()->sync($ids);
+        $task->labels()->sync($labels);
+//        $ids = $labels->modelKeys();
+//        $task->labels()->sync($ids);
         flash('Задача успешно изменена');
         return redirect()
             ->route('task.index');

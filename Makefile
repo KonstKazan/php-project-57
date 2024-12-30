@@ -11,6 +11,7 @@ install:
 	php artisan db:seed --force
 	npm ci
 	npm run build
+	make ide-helper
 
 test:
 	php artisan test

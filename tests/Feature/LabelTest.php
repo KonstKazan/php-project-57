@@ -50,8 +50,10 @@ class LabelTest extends TestCase
      */
     public function testLabelUpdate(): void
     {
-        $this->seed();
-        $id = Label::all()->first()->value('id');
+//        $this->seed();
+//        $id = Label::all()->first()->value('id');
+        $label = Label::factory()->create();
+        $id = $label->id;
         $response = $this
             ->patch("/labels/$id", [
                 'name' => 'Test Label',

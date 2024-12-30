@@ -49,9 +49,11 @@ class TaskStatusTest extends TestCase
      */
     public function testTaskStatusUpdate(): void
     {
-        $this->seed();
-        $status = TaskStatus::all()->first();
-        $id = $status->value('id');
+//        $this->seed();
+//        $status = TaskStatus::all()->first();
+//        $id = $status->value('id');
+        $taskStatus = TaskStatus::factory()->create();
+        $id = $taskStatus->id;
         $response = $this
             ->patch("/task_statuses/$id", [
                 'name' => 'Test Status',
@@ -75,12 +77,14 @@ class TaskStatusTest extends TestCase
         $this
             ->actingAs($user)
             ->get('/profile');
-        $this->seed();
-        $status = TaskStatus::all()->first();
-        $id = $status->value('id');
+//        $this->seed();
+//        $status = TaskStatus::all()->first();
+//        $id = $status->value('id');
+        $taskStatus = TaskStatus::factory()->create();
+        $id = $taskStatus->id;
         $response = $this
-            ->delete("/task_statuses/$id", ['status' => $status]);
+            ->delete("/task_statuses/$id", ['status' => $taskStatus]);
         $response->assertSessionHasNoErrors();
-        $this->assertModelMissing($status);
+        $this->assertModelMissing($taskStatus);
     }
 }

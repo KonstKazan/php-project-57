@@ -11,8 +11,27 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 
 /**
- * @method static find(int $int)
- * @method static where(string $string, string $string1)
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $description
+ * @property string $created_at
+ * @property Carbon|null $updated_at
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Task> $tasks
+ * @property-read int|null $tasks_count
+ * @method static \Database\Factories\LabelFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Label newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Label newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Label query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Label whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Label whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Label whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Label whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Label whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Label extends Model
 {

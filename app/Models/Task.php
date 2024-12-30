@@ -12,7 +12,36 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 
 /**
- * @property bool|mixed $created_by_id
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $description
+ * @property int $status_id
+ * @property int $created_by_id
+ * @property int $assigned_to_id
+ * @property string $created_at
+ * @property Carbon|null $updated_at
+ * @property-read \App\Models\User $creator
+ * @property-read \App\Models\User $executer
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Label> $labels
+ * @property-read int|null $labels_count
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \App\Models\TaskStatus $status
+ * @method static \Database\Factories\TaskFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereAssignedToId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereCreatedById($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereStatusId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Task extends Model
 {

@@ -18,9 +18,9 @@ use Illuminate\Support\Carbon;
  * @property string $name
  * @property string $description
  * @property int $status_id
- * @property int $created_by_id
+ * @property int|string|null $created_by_id
  * @property int $assigned_to_id
- * @property string|null $created_at
+ * @property string $created_at
  * @property Carbon|null $updated_at
  * @property-read \App\Models\User $creator
  * @property-read \App\Models\User $executer

@@ -27,21 +27,28 @@ class TaskTest extends TestCase
      */
     public function testTaskCreate(): void
     {
-        $this->seed();
+//        $this->seed();
         $user = User::factory()->create();
-        $userId = $user->value('id');
+        $userId = $user->id;
 
         $this
             ->actingAs($user)
             ->get('/profile');
 
-        $taskStatus = TaskStatus::all()->first();
-        $StatusId = $taskStatus->value('id');
+//        $taskStatus = TaskStatus::all()->first();
+//        $StatusId = $taskStatus->value('id');
+        $taskStatus = TaskStatus::factory()->create();
+        $statusId = $taskStatus->id;
+        $task = Task::factory()->create([
+            'status_id' => $taskStatus->id,
+            'assigned_to_id' => $user->id,
+            'created_by_id' => $user->id,
+        ]);
         $response = $this
             ->post('/tasks', [
                 'name' => 'Test Task',
                 'description' => 'Test Description',
-                'status_id' => $StatusId,
+                'status_id' => $statusId,
                 'assigned_to_id' => $userId,
                 'labels' => [1, 2],
             ]);

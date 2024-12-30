@@ -12,7 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $name

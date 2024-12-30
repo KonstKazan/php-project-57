@@ -77,9 +77,11 @@ class LabelTest extends TestCase
             ->actingAs($user)
             ->get('/profile');
 
-        $this->seed();
-        $label = Label::all()->first();
-        $id = $label->value('id');
+//        $this->seed();
+//        $label = Label::all()->first();
+//        $id = $label->value('id');
+        $label = Label::factory()->create();
+        $id = $label->id;
         $response = $this
             ->delete("/labels/$id", ['label' => $label]);
         $response->assertSessionHasNoErrors();

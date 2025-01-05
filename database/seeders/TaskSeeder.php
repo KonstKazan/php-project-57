@@ -20,7 +20,12 @@ class TaskSeeder extends Seeder
             ->for(User::factory(), 'executer')
             ->for(TaskStatus::factory(), 'status')
             ->has(Label::factory(), 'labels')
-            ->create();
+            ->create(
+                [
+                    'name' => 'документация',
+                    'description' => 'Задача которая касается документации',
+                ],
+            );
     }
 //        DB::table('tasks')->insert([
 //            'name' => 'документация',

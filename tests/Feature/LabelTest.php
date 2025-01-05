@@ -50,8 +50,6 @@ class LabelTest extends TestCase
      */
     public function testLabelUpdate(): void
     {
-//        $this->seed();
-//        $id = Label::all()->first()->value('id');
         $label = Label::factory()->create();
         $id = $label->id;
         $response = $this
@@ -79,9 +77,6 @@ class LabelTest extends TestCase
             ->actingAs($user)
             ->get('/profile');
 
-//        $this->seed();
-//        $label = Label::all()->first();
-//        $id = $label->value('id');
         $label = Label::factory()->create();
         $id = $label->id;
         $response = $this

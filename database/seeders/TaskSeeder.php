@@ -16,39 +16,36 @@ class TaskSeeder extends Seeder
     public function run(): void
     {
         Task::factory()
-            ->for(User::factory(), 'creator')
-            ->for(User::factory(), 'executer')
-            ->for(TaskStatus::factory(), 'status')
-            ->has(Label::factory(), 'labels')
+            ->for(User::all()->random(), 'creator')
+            ->for(User::all()->random(), 'executer')
+            ->for(TaskStatus::all()->random(), 'status')
             ->create(
                 [
                     'name' => 'документация',
                     'description' => 'Задача которая касается документации',
                 ],
-            );
-    }
-//        DB::table('tasks')->insert([
-//            'name' => 'документация',
-//            'description' => 'Задача которая касается документации',
-//            'created_at' => "$now",
-//            'updated_at' => "$now",
-//
-//        ]);
-//
-//        DB::table('tasks')->insert([
-//            'name' => 'дубликат',
-//            'description' => 'Повтор другой задачи',
-//            'created_at' => "$now",
-//            'updated_at' => "$now",
-//
-//        ]);
+            )->labels()->attach(Label::all()->random());
 
-//        DB::table('labels')->insert([
-//            'name' => 'доработка',
-//            'description' => 'Новая фича, которую нужно запилить',
-//            'created_at' => "$now",
-//            'updated_at' => "$now",
-//
-//        ]);
-//    }
+        Task::factory()
+            ->for(User::all()->random(), 'creator')
+            ->for(User::all()->random(), 'executer')
+            ->for(TaskStatus::all()->random(), 'status')
+            ->create(
+                [
+                    'name' => 'дубликат',
+                    'description' => 'Повтор другой задачи',
+                ],
+            )->labels()->attach(Label::all()->random());
+
+        Task::factory()
+            ->for(User::all()->random(), 'creator')
+            ->for(User::all()->random(), 'executer')
+            ->for(TaskStatus::all()->random(), 'status')
+            ->create(
+                [
+                    'name' => 'доработка',
+                    'description' => 'Новая фича, которую нужно запилить',
+                ],
+            )->labels()->attach(Label::all()->random());
+    }
 }

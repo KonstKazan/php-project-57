@@ -27,7 +27,6 @@ class TaskTest extends TestCase
      */
     public function testTaskCreate(): void
     {
-//        $this->seed();
         $user = User::factory()->create();
         $userId = $user->id;
 
@@ -35,8 +34,6 @@ class TaskTest extends TestCase
             ->actingAs($user)
             ->get('/profile');
 
-//        $taskStatus = TaskStatus::all()->first();
-//        $StatusId = $taskStatus->value('id');
         $taskStatus = TaskStatus::factory()->create();
         $statusId = $taskStatus->id;
         $task = Task::factory()->create([

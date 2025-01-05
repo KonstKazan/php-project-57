@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\TaskStatus;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use JsonException;
 use Tests\TestCase;
 
 class TaskStatusTest extends TestCase
@@ -19,7 +20,7 @@ class TaskStatusTest extends TestCase
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     public function testTaskStatusCreate(): void
     {
@@ -45,13 +46,10 @@ class TaskStatusTest extends TestCase
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     public function testTaskStatusUpdate(): void
     {
-//        $this->seed();
-//        $status = TaskStatus::all()->first();
-//        $id = $status->value('id');
         $taskStatus = TaskStatus::factory()->create();
         $id = $taskStatus->id;
         $response = $this
@@ -68,7 +66,7 @@ class TaskStatusTest extends TestCase
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     public function testTaskStatusDelete(): void
     {
@@ -77,9 +75,7 @@ class TaskStatusTest extends TestCase
         $this
             ->actingAs($user)
             ->get('/profile');
-//        $this->seed();
-//        $status = TaskStatus::all()->first();
-//        $id = $status->value('id');
+
         $taskStatus = TaskStatus::factory()->create();
         $id = $taskStatus->id;
         $response = $this

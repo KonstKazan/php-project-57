@@ -21,5 +21,8 @@ $ cd php-project-57
 
 $ make setup
 
-$ make start
+$ make install
 ```
+
+### Example of how the application works
+[Render.com](https://php-project-57-he7r.onrender.com)

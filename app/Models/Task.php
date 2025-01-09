@@ -70,11 +70,6 @@ class Task extends Model
         return $this->belongsToMany(Label::class);
     }
 
-//    protected $dateFormat = 'd.m.Y';
-//    protected function serializeDate(DateTimeInterface $date): string
-//    {
-//        return $date->format('d.m.Y');
-//    }
     public function getCreatedAtAttribute(mixed $value): string
     {
         return Carbon::parse($value)->format('d.m.Y');

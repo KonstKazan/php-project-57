@@ -40,7 +40,6 @@ class Label extends Model
     use Notifiable;
 
     protected $fillable = ['name', 'description'];
-//    protected $dateFormat = 'd.m.Y';
 
     public function tasks(): BelongsToMany
     {

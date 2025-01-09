@@ -44,11 +44,6 @@ class TaskStatus extends Model
         return $this->hasMany(Task::class, 'status_id');
     }
 
-//    protected $dateFormat = 'd.m.Y';
-//    protected function serializeDate(DateTimeInterface $date): string
-//    {
-//        return $date->format('d.m.Y');
-//    }
     public function getCreatedAtAttribute(mixed $value): string
     {
         return Carbon::parse($value)->format('d.m.Y');

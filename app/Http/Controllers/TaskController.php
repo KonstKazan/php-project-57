@@ -30,7 +30,6 @@ class TaskController extends Controller
                 AllowedFilter::exact('assigned_to_id')
             ])
             ->get();
-//        $tasks = Task::paginate();
         return view('task.index', [
             'tasks' => $tasks,
             'users' => $users,
@@ -138,8 +137,6 @@ class TaskController extends Controller
         $labelsReq = $request->input('labels');
         $labels = Label::find($labelsReq) ?? [];
         $task->labels()->sync($labels);
-//        $ids = $labels->modelKeys();
-//        $task->labels()->sync($ids);
         flash('Задача успешно изменена');
         return redirect()
             ->route('task.index');

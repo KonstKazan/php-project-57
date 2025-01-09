@@ -13,6 +13,15 @@ install:
 	npm run build
 	make ide-helper
 
+install-prod:
+	composer install
+	cp -n .env.example .env
+	php artisan key:gen --ansi
+	php artisan migrate --force
+	php artisan db:seed --force
+	npm ci
+	npm run build
+
 test:
 	php artisan test
 

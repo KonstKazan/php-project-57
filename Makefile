@@ -17,8 +17,7 @@ install-prod:
 	composer install
 	cp -n .env.example .env
 	php artisan key:gen --ansi
-	php artisan migrate --force
-	php artisan db:seed --force
+	php artisan migrate:fresh --seed --force
 	npm ci
 	npm run build
 

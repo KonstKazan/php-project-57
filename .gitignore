@@ -3,9 +3,9 @@
 out
 gen
 .env
-/.phpunit.result.cache
-/_ide_helper.php
-/_ide_helper_models.php
+.phpunit.result.cache
+_ide_helper.php
+_ide_helper_models.php
 
 /vendor/
 /node_modules/

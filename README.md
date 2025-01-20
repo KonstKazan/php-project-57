@@ -19,8 +19,6 @@ $ git clone https://github.com/KonstKazan/php-project-57.git
 
 $ cd php-project-57
 
-$ make setup
-
 $ make install
 ```
 

@@ -6,7 +6,6 @@ install:
 	composer install
 	cp -n .env.example .env
 	php artisan key:gen --ansi
-	#touch database/database.sqlite
 	php artisan migrate --force
 	php artisan db:seed --force
 	npm ci
@@ -18,6 +17,16 @@ install-prod:
 	cp -n .env.example .env
 	php artisan key:gen --ansi
 	php artisan migrate:fresh --seed --force
+	npm ci
+	npm run build
+
+install-test:
+	composer install
+	cp -n .env.example.test .env
+	php artisan key:gen --ansi
+	touch database/database.sqlite
+	php artisan migrate --force
+	php artisan db:seed --force
 	npm ci
 	npm run build
 

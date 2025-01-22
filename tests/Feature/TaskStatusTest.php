@@ -10,11 +10,10 @@ use Tests\TestCase;
 
 class TaskStatusTest extends TestCase
 {
-    use RefreshDatabase;
 
     public function testTaskStatusPage(): void
     {
-        $response = $this->get('/task_statuses');
+        $response = $this->get(route('status.index'));
 
         $response->assertStatus(200);
     }
@@ -25,12 +24,12 @@ class TaskStatusTest extends TestCase
     public function testTaskStatusCreate(): void
     {
         $response = $this
-            ->post('/task_statuses', [
+            ->post(route('status.create'), [
                 'name' => 'Test Label',
             ]);
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/task_statuses');
+            ->assertRedirect(route('status.index'));
 
         $this->assertDatabaseHas('task_statuses', [
             'name' => 'Test Label',
@@ -51,14 +50,13 @@ class TaskStatusTest extends TestCase
     public function testTaskStatusUpdate(): void
     {
         $taskStatus = TaskStatus::factory()->create();
-        $id = $taskStatus->id;
         $response = $this
-            ->patch("/task_statuses/$id", [
+            ->patch(route('status.update', ['task_status' => $taskStatus]), [
                 'name' => 'Test Status',
             ]);
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/task_statuses');
+            ->assertRedirect(route('status.index'));
 
         $this->assertDatabaseHas('task_statuses', [
             'name' => 'Test Status',
@@ -74,12 +72,11 @@ class TaskStatusTest extends TestCase
 
         $this
             ->actingAs($user)
-            ->get('/profile');
+            ->get(route('profile.edit'));
 
         $taskStatus = TaskStatus::factory()->create();
-        $id = $taskStatus->id;
         $response = $this
-            ->delete("/task_statuses/$id", ['status' => $taskStatus]);
+            ->delete(route('status.destroy', ['task_status' => $taskStatus]));
         $response->assertSessionHasNoErrors();
         $this->assertModelMissing($taskStatus);
     }

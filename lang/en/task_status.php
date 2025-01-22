@@ -25,5 +25,9 @@ return [
     'delete' => 'Delete',
     'edit' => 'Edit',
     'status' => 'Status',
+    'flashCreate' => 'The status was created successfully',
+    'flashChange' => 'Status changed successfully',
+    'flashNotDelete' => "Couldn't delete status",
+    'flashDelete' => 'Status successfully deleted',
 
 ];

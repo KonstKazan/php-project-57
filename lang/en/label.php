@@ -24,6 +24,10 @@ return [
     'edit' => 'Edit',
     'editLabel' => 'Edit label',
     'update' => 'Update',
+    'flashCreate' => 'The label was created successfully',
+    'flashChange' => 'The label was successfully changed',
+    'flashNotDelete' => "Couldn't delete label",
+    'flashDelete' => 'The label was successfully deleted',
     'create' => 'Create',
 
 ];

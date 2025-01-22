@@ -9,11 +9,10 @@ use Tests\TestCase;
 
 class LabelTest extends TestCase
 {
-    use RefreshDatabase;
 
     public function testLabelsPage(): void
     {
-        $response = $this->get('/labels');
+        $response = $this->get(route('label.index'));
 
         $response->assertStatus(200);
     }
@@ -24,13 +23,13 @@ class LabelTest extends TestCase
     public function testLabelCreate(): void
     {
         $response = $this
-            ->post('/labels', [
+            ->post(route('label.index'), [
                 'name' => 'Test Label',
                 'description' => 'Test Description',
             ]);
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/labels');
+            ->assertRedirect(route('label.index'));
 
         $this->assertDatabaseHas('labels', [
             'description' => 'Test Description',
@@ -51,15 +50,14 @@ class LabelTest extends TestCase
     public function testLabelUpdate(): void
     {
         $label = Label::factory()->create();
-        $id = $label->id;
         $response = $this
-            ->patch("/labels/$id", [
+            ->patch(route('label.update', ['label' => $label]), [
                 'name' => 'Test Label',
                 'description' => 'Test Description',
             ]);
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/labels');
+            ->assertRedirect(route('label.index'));
 
         $this->assertDatabaseHas('labels', [
             'description' => 'Test Description',
@@ -75,12 +73,11 @@ class LabelTest extends TestCase
 
         $this
             ->actingAs($user)
-            ->get('/profile');
+            ->get(route('profile.edit'));
 
         $label = Label::factory()->create();
-        $id = $label->id;
         $response = $this
-            ->delete("/labels/$id", ['label' => $label]);
+            ->delete(route('label.destroy', ['label' => $label]));
         $response->assertSessionHasNoErrors();
         $this->assertModelMissing($label);
     }

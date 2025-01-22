@@ -33,5 +33,8 @@ return [
     'description' => 'Description',
     'tags' => 'Tags',
     'view' => 'View task:',
+    'flashCreate' => 'The task was created successfully',
+    'flashChange' => 'The issue has been successfully changed',
+    'flashDelete' => 'The issue was successfully deleted',
 
 ];

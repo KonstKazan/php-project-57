@@ -10,14 +10,13 @@ use Tests\TestCase;
 
 class TaskTest extends TestCase
 {
-    use RefreshDatabase;
 
     /**
      * A basic feature test example.
      */
     public function testTaskPage(): void
     {
-        $response = $this->get('/tasks');
+        $response = $this->get(route('task.index'));
 
         $response->assertStatus(200);
     }
@@ -32,7 +31,7 @@ class TaskTest extends TestCase
 
         $this
             ->actingAs($user)
-            ->get('/profile');
+            ->get(route('profile.edit'));
 
         $taskStatus = TaskStatus::factory()->create();
         $statusId = $taskStatus->id;
@@ -42,7 +41,7 @@ class TaskTest extends TestCase
             'created_by_id' => $user->id,
         ]);
         $response = $this
-            ->post('/tasks', [
+            ->post(route('task.create'), [
                 'name' => 'Test Task',
                 'description' => 'Test Description',
                 'status_id' => $statusId,
@@ -50,7 +49,7 @@ class TaskTest extends TestCase
                 'labels' => [1, 2],
             ]);
         $response
-            ->assertSessionHasNoErrors()->assertRedirect('/tasks');
+            ->assertSessionHasNoErrors()->assertRedirect(route('task.index'));
 
         $this->assertDatabaseHas('tasks', [
             'name' => "Test Task",
@@ -73,7 +72,7 @@ class TaskTest extends TestCase
         ]);
 
         $response = $this
-            ->patch("/tasks/$task->id", [
+            ->patch(route('task.update', ['task' => $task]), [
                 'name' => 'Test Task',
                 'description' => 'Test Description',
                 'status_id' => $status->id,
@@ -81,7 +80,7 @@ class TaskTest extends TestCase
             ]);
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/tasks');
+            ->assertRedirect(route('task.index'));
 
         $this->assertDatabaseHas('tasks', [
             'description' => 'Test Description',
@@ -96,7 +95,7 @@ class TaskTest extends TestCase
         $user = User::factory()->create();
         $this
             ->actingAs($user)
-            ->get('/profile');
+            ->get(route('profile.edit'));
 
         $status = TaskStatus::factory()->create();
         $task = Task::factory()->create([
@@ -106,7 +105,7 @@ class TaskTest extends TestCase
         ]);
 
         $response = $this
-            ->delete("/tasks/$task->id", ['task' => $task]);
+            ->delete(route('task.destroy', ['task' => $task]));
         $response->assertSessionHasNoErrors();
         $this->assertModelMissing($task);
     }

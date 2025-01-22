@@ -9,7 +9,6 @@ use Tests\TestCase;
 
 class LabelTest extends TestCase
 {
-
     public function testLabelsPage(): void
     {
         $response = $this->get(route('label.index'));

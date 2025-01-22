@@ -10,7 +10,6 @@ use Tests\TestCase;
 
 class TaskTest extends TestCase
 {
-
     /**
      * A basic feature test example.
      */

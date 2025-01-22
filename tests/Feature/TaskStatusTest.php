@@ -10,7 +10,6 @@ use Tests\TestCase;
 
 class TaskStatusTest extends TestCase
 {
-
     public function testTaskStatusPage(): void
     {
         $response = $this->get(route('status.index'));

@@ -14,6 +14,7 @@
                     <div class="mt-2">
                         <input class="rounded border-gray-300 w-1/3" type="text" name="name" id="name" value="{{ $label->name }}">
                     </div>
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     <div class="mt-2">
                         <label for="description">{{ __('label.description') }}</label>
                     </div>

@@ -29,6 +29,7 @@ return [
     'executor' => 'Executor',
     'dateCreate' => 'Date of creation',
     'tasks' => 'Tasks',
+    'task' => 'Task',
     'createTask' => 'Create task',
     'description' => 'Description',
     'tags' => 'Tags',

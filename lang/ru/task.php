@@ -28,6 +28,7 @@ return [
     'executor' => 'Исполнитель',
     'dateCreate' => 'Дата создания',
     'tasks' => 'Задачи',
+    'task' => 'Задача',
     'createTask' => 'Создать задачу',
     'description' => 'Описание',
     'tags' => 'Метки',

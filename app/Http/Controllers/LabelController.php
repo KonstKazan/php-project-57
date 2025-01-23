@@ -37,7 +37,7 @@ class LabelController extends Controller
         $dataFill = $request->validate([
             'name' => 'required|unique:labels|max:20',
             'description' => 'max:100',
-        ], [''], ['name' => 'Метка']);
+        ], [''], ['name' => __('label.label')]);
         $label = new Label();
         $label->fill($dataFill);
         $label->save();
@@ -65,7 +65,7 @@ class LabelController extends Controller
         $data = $request->validate([
             'name' => "required|max:20|unique:labels,name,{$label->id}",
             'description' => 'max:100',
-        ], [''], ['name' => 'Метка']);
+        ], [''], ['name' => __('label.label')]);
         $label->fill($data);
         $label->save();
         flash(__('label.flashChange'))->success();

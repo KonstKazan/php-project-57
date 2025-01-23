@@ -71,7 +71,7 @@ class TaskController extends Controller
             'description' => 'max:100',
             'status_id' => 'required',
             'assigned_to_id' => '',
-        ]);
+        ], [''], ['name' => __('task.task')]);
         $labelsReq = $request->input('labels');
         $labels = Label::find($labelsReq);
         $task = new Task();
@@ -131,7 +131,7 @@ class TaskController extends Controller
             'description' => 'max:100',
             'status_id' => 'required',
             'assigned_to_id' => '',
-        ]);
+        ], [''], ['name' => __('task.task')]);
         $task->fill($dataFill);
         $task->save();
         $labelsReq = $request->input('labels');

@@ -36,7 +36,7 @@ class TaskStatusController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|unique:task_statuses|max:20'
-        ], [''], ['name' => 'Статус']);
+        ], [''], ['name' => __('task_status.status')]);
         $status = new TaskStatus();
         $status->fill($data);
         $status->save();
@@ -63,7 +63,7 @@ class TaskStatusController extends Controller
     {
         $data = $request->validate([
             'name' => "required|max:20|unique:task_statuses,name,{$taskStatus->id}"
-        ], [''], ['name' => 'Статус']);
+        ], [''], ['name' => __('task_status.status')]);
         $taskStatus->fill($data);
         $taskStatus->save();
         flash(__('task_status.flashChange'))->success();

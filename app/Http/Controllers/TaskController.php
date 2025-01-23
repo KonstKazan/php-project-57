@@ -79,7 +79,7 @@ class TaskController extends Controller
         $task->created_by_id = Auth::id();
         $task->save();
         $task->labels()->attach($labels);
-        flash(__('task.flashCreate'));
+        flash(__('task.flashCreate'))->success();
         return redirect()
             ->route('task.index');
     }
@@ -137,7 +137,7 @@ class TaskController extends Controller
         $labelsReq = $request->input('labels');
         $labels = Label::find($labelsReq) ?? [];
         $task->labels()->sync($labels);
-        flash(__('task.flashChange'));
+        flash(__('task.flashChange'))->success();
         return redirect()
             ->route('task.index');
     }
@@ -150,7 +150,7 @@ class TaskController extends Controller
         if (Auth::check()) {
             $task->labels()->detach();
             $task->delete();
-            flash(__('task.flashDelete'));
+            flash(__('task.flashDelete'))->success();
             return redirect()->route('task.index');
         }
         return abort(401);

@@ -40,7 +40,7 @@ class TaskStatusController extends Controller
         $status = new TaskStatus();
         $status->fill($data);
         $status->save();
-        flash(__('task_status.flashCreate'));
+        flash(__('task_status.flashCreate'))->success();
         return redirect()
             ->route('status.index');
     }
@@ -66,7 +66,7 @@ class TaskStatusController extends Controller
         ], [''], ['name' => 'Статус']);
         $taskStatus->fill($data);
         $taskStatus->save();
-        flash(__('task_status.flashChange'));
+        flash(__('task_status.flashChange'))->success();
         return redirect()
             ->route('status.index');
     }
@@ -80,11 +80,11 @@ class TaskStatusController extends Controller
             try {
                 $taskStatus->delete();
             } catch (\Exception $e) {
-                flash(__('task_status.flashNotDelete'));
+                flash(__('task_status.flashNotDelete'))->error();
                 return redirect()
                     ->route('status.index');
             }
-            flash(__('task_status.flashDelete'));
+            flash(__('task_status.flashDelete'))->success();
             return redirect()->route('status.index');
         }
         return abort(401);

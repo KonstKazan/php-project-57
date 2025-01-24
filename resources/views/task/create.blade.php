@@ -11,7 +11,7 @@
                             <label for="name">{{ __('task.name') }}</label>
                         </div>
                         <div class="mt-2">
-                            <input class="rounded border-gray-300 w-1/3" type="text" name="name" id="name">
+                            <input class="rounded border-gray-300 w-1/3" type="text" name="name" id="name" value="{{ old('name') }}">
                         </div>
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         <div class="mt-2">

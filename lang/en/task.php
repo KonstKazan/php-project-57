@@ -30,6 +30,7 @@ return [
     'dateCreate' => 'Date of creation',
     'tasks' => 'Tasks',
     'task' => 'Task',
+    'apply' => 'Apply',
     'createTask' => 'Create task',
     'description' => 'Description',
     'tags' => 'Tags',

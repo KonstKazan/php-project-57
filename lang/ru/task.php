@@ -29,6 +29,7 @@ return [
     'dateCreate' => 'Дата создания',
     'tasks' => 'Задачи',
     'task' => 'Задача',
+    'apply' => 'Применить',
     'createTask' => 'Создать задачу',
     'description' => 'Описание',
     'tags' => 'Метки',

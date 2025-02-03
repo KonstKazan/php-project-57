@@ -43,7 +43,7 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" type="submit">Применить</button>
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" type="submit">{{ __('task.apply') }}</button>
                             </div>
                         </form>
                     </div>
@@ -81,7 +81,7 @@
                                 </a>
                             </td>
                             <td>{{ $task->creator->name }}</td>
-                            <td>{{ $task->executer->name }}</td>
+                            <td>{{ $task->executer->name ?? '' }}</td>
                             <td>{{ $task->created_at }}</td>
 
                                 <td>
